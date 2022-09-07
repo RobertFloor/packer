@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+
+  tasks:
+    - name: message
+      debug: msg="Container {{ inventory_hostname }}"
+      #become: yes
+    - name: install nginx
+      package: name=nginx state=latest
+      become: yes

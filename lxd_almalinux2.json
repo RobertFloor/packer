@@ -1,0 +1,30 @@
+{
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": "ls, sudo dnf install -y openssh-server, sudo useradd ansible, sudo usermod -aG wheel ansible "
+      		
+    },
+    {
+      "type": "ansible-local",
+      "playbook_file": "./playbook.yml",
+      "extra_arguments": [
+	"-vvvv"       
+      ]
+    }
+  ],
+
+
+  "builders": [
+    {
+      "type": "lxd",
+      "name": "almalinux-9",
+      "image": "images:almalinux/9",
+      "output_image": "almalinux-9",
+      "init_sleep": "10",
+      "publish_properties": {
+        "description": "Almalinux image build by Robert"
+      }
+    }
+  ]
+}

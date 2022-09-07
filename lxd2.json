@@ -1,0 +1,28 @@
+{
+  "provisioners": [
+     {
+	"type" = "script"     
+	"script" = "instal_python.sh"
+     }	
+	
+ #   {
+ #    "type": "ansible-local",
+ #     "playbook_file": "./playbook/example-playbook.yml",
+ #     "playbook_dir" : "./playbook"
+ #   }
+  ],
+
+
+  "builders": [
+    {
+      "type": "lxd",
+      "name": "acme-focal",
+      "image": "ubuntu-daily:focal",
+      "output_image": "acme_ubuntu-focal",
+      "init_sleep": "10",
+      "publish_properties": {
+        "description": "Focal image by ACME corp."
+      }
+    }
+  ]
+}

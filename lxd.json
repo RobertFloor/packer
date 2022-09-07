@@ -1,0 +1,29 @@
+{
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": "[ \"$(ansible --version > /dev/null && echo ok)\" != 'ok' ] && apt update && apt -y install ansible || echo 'ansible already installed.'"
+    },
+    {
+      "type": "ansible-local",
+      "playbook_file": "./playbook.yml",
+      "extra_arguments": [
+	"-vvvv"       
+      ]
+    }
+  ],
+
+
+  "builders": [
+    {
+      "type": "lxd",
+      "name": "acme-focal",
+      "image": "ubuntu-daily:focal",
+      "output_image": "acme_ubuntu-focal",
+      "init_sleep": "10",
+      "publish_properties": {
+        "description": "Focal image by ACME corp."
+      }
+    }
+  ]
+}

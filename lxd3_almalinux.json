@@ -1,0 +1,31 @@
+{
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "install.sh"
+      		
+    },
+    {
+      "type": "ansible",
+      "playbook_file": "./playbook.yml",
+      "user": "ansible",
+      "extra_arguments": [
+	"-u ansible", "-vvvv"       
+      ]
+    }
+  ],
+
+
+  "builders": [
+    {
+      "type": "lxd",
+      "name": "almalinux-9",
+      "image": "images:almalinux/9",
+      "output_image": "almalinux-9",
+      "init_sleep": "10",
+      "publish_properties": {
+        "description": "Almalinux image build by Robert"
+      }
+    }
+  ]
+}

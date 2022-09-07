@@ -1,0 +1,16 @@
+{
+  "builders": [
+    {
+      "type": "lxd",
+      "name": "lxd-xenial",
+      "image": "ubuntu-daily:xenial",
+      "output_image": "ubuntu-xenial",
+      "publish_properties": {
+        "description": "Trivial repackage with Packer"
+      }
+    }
+  ],
+    provisioner "shell" {
+     script = "install_python.sh"
+    }
+}

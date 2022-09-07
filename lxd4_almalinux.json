@@ -1,0 +1,43 @@
+{
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "install.sh"
+      		
+    },
+    {
+ 	 "type": "file",
+  	"source": "./amq/roles/amq_broker",
+  	"destination": "/usr/share/ansible/roles"
+   },
+       {
+         "type": "file",
+        "source": "./amq/requirements.yml",
+        "destination": "/tmp/requirements.yml"
+   },
+     {
+      "type": "shell",
+      "script": "galaxy-install.sh"
+
+    },
+   {
+      "type": "ansible-local",
+      "playbook_file": "./active-mq-local.yml",
+      "role_paths": "./amq/roles"
+    } 
+  ],
+
+
+  "builders": [
+    {
+      "type": "lxd",
+      "name": "almalinux-9",
+      "image": "images:almalinux/9",
+      "output_image": "almalinux-9",
+      "init_sleep": "10",
+      "publish_properties": {
+        "description": "Almalinux image build by Robert"
+      }
+    }
+  ]
+}

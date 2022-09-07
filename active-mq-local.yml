@@ -1,0 +1,5 @@
+---
+- name: Playbook for Red Hat AMQ Broker
+  hosts: localhost
+  roles:
+   - amq_broker

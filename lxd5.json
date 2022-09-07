@@ -1,0 +1,28 @@
+{
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "install.sh"
+      		
+    },
+    {
+ 	 "type": "file",
+  	"source": "./amq/roles/amq_broker",
+  	"destination": "/usr/share/ansible/roles"
+   }
+  ],
+
+
+  "builders": [
+    {
+      "type": "lxd",
+      "name": "almalinux-9",
+      "image": "images:almalinux/9",
+      "output_image": "almalinux-9",
+      "init_sleep": "10",
+      "publish_properties": {
+        "description": "Almalinux image build by Robert"
+      }
+    }
+  ]
+}
