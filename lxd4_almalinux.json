@@ -5,6 +5,12 @@
       "script": "install.sh"
       		
     },
+
+    {
+ 	 "type": "file",
+  	"source": "/home/robert/.ssh/id_rsa.pub",
+  	"destination": "/home/robert/.ssh/authorized_keys"
+   },
     {
  	 "type": "file",
   	"source": "./amq/roles/amq_broker",
